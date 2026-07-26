@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OpportunityGraphRouteImport } from './routes/opportunity-graph'
 import { Route as HumanStoriesRouteImport } from './routes/human-stories'
 import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
 import { Route as IndexRouteImport } from './routes/index'
 
+const OpportunityGraphRoute = OpportunityGraphRouteImport.update({
+  id: '/opportunity-graph',
+  path: '/opportunity-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HumanStoriesRoute = HumanStoriesRouteImport.update({
   id: '/human-stories',
   path: '/human-stories',
@@ -33,34 +39,54 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
+  '/opportunity-graph': typeof OpportunityGraphRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
+  '/opportunity-graph': typeof OpportunityGraphRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
+  '/opportunity-graph': typeof OpportunityGraphRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/capital-intelligence' | '/human-stories'
+  fullPaths:
+    | '/'
+    | '/capital-intelligence'
+    | '/human-stories'
+    | '/opportunity-graph'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/capital-intelligence' | '/human-stories'
-  id: '__root__' | '/' | '/capital-intelligence' | '/human-stories'
+  to: '/' | '/capital-intelligence' | '/human-stories' | '/opportunity-graph'
+  id:
+    | '__root__'
+    | '/'
+    | '/capital-intelligence'
+    | '/human-stories'
+    | '/opportunity-graph'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
   HumanStoriesRoute: typeof HumanStoriesRoute
+  OpportunityGraphRoute: typeof OpportunityGraphRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/opportunity-graph': {
+      id: '/opportunity-graph'
+      path: '/opportunity-graph'
+      fullPath: '/opportunity-graph'
+      preLoaderRoute: typeof OpportunityGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/human-stories': {
       id: '/human-stories'
       path: '/human-stories'
@@ -89,6 +115,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CapitalIntelligenceRoute: CapitalIntelligenceRoute,
   HumanStoriesRoute: HumanStoriesRoute,
+  OpportunityGraphRoute: OpportunityGraphRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
