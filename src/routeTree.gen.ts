@@ -15,6 +15,7 @@ import { Route as MoralIntelligenceRouteImport } from './routes/moral-intelligen
 import { Route as MissionControlRouteImport } from './routes/mission-control'
 import { Route as HumanStoriesRouteImport } from './routes/human-stories'
 import { Route as CollectiveIntelligenceRouteImport } from './routes/collective-intelligence'
+import { Route as CivilizationDashboardRouteImport } from './routes/civilization-dashboard'
 import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -48,6 +49,11 @@ const CollectiveIntelligenceRoute = CollectiveIntelligenceRouteImport.update({
   path: '/collective-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CivilizationDashboardRoute = CivilizationDashboardRouteImport.update({
+  id: '/civilization-dashboard',
+  path: '/civilization-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapitalIntelligenceRoute = CapitalIntelligenceRouteImport.update({
   id: '/capital-intelligence',
   path: '/capital-intelligence',
@@ -62,6 +68,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/civilization-dashboard': typeof CivilizationDashboardRoute
   '/collective-intelligence': typeof CollectiveIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/civilization-dashboard': typeof CivilizationDashboardRoute
   '/collective-intelligence': typeof CollectiveIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/civilization-dashboard': typeof CivilizationDashboardRoute
   '/collective-intelligence': typeof CollectiveIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/capital-intelligence'
+    | '/civilization-dashboard'
     | '/collective-intelligence'
     | '/human-stories'
     | '/mission-control'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/capital-intelligence'
+    | '/civilization-dashboard'
     | '/collective-intelligence'
     | '/human-stories'
     | '/mission-control'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/capital-intelligence'
+    | '/civilization-dashboard'
     | '/collective-intelligence'
     | '/human-stories'
     | '/mission-control'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
+  CivilizationDashboardRoute: typeof CivilizationDashboardRoute
   CollectiveIntelligenceRoute: typeof CollectiveIntelligenceRoute
   HumanStoriesRoute: typeof HumanStoriesRoute
   MissionControlRoute: typeof MissionControlRoute
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectiveIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/civilization-dashboard': {
+      id: '/civilization-dashboard'
+      path: '/civilization-dashboard'
+      fullPath: '/civilization-dashboard'
+      preLoaderRoute: typeof CivilizationDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capital-intelligence': {
       id: '/capital-intelligence'
       path: '/capital-intelligence'
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CapitalIntelligenceRoute: CapitalIntelligenceRoute,
+  CivilizationDashboardRoute: CivilizationDashboardRoute,
   CollectiveIntelligenceRoute: CollectiveIntelligenceRoute,
   HumanStoriesRoute: HumanStoriesRoute,
   MissionControlRoute: MissionControlRoute,
