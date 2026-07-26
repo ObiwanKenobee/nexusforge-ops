@@ -14,6 +14,7 @@ import { Route as OpportunityGraphRouteImport } from './routes/opportunity-graph
 import { Route as MoralIntelligenceRouteImport } from './routes/moral-intelligence'
 import { Route as MissionControlRouteImport } from './routes/mission-control'
 import { Route as HumanStoriesRouteImport } from './routes/human-stories'
+import { Route as CollectiveIntelligenceRouteImport } from './routes/collective-intelligence'
 import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -42,6 +43,11 @@ const HumanStoriesRoute = HumanStoriesRouteImport.update({
   path: '/human-stories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectiveIntelligenceRoute = CollectiveIntelligenceRouteImport.update({
+  id: '/collective-intelligence',
+  path: '/collective-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapitalIntelligenceRoute = CapitalIntelligenceRouteImport.update({
   id: '/capital-intelligence',
   path: '/capital-intelligence',
@@ -56,6 +62,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/collective-intelligence': typeof CollectiveIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/collective-intelligence': typeof CollectiveIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/collective-intelligence': typeof CollectiveIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/capital-intelligence'
+    | '/collective-intelligence'
     | '/human-stories'
     | '/mission-control'
     | '/moral-intelligence'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/capital-intelligence'
+    | '/collective-intelligence'
     | '/human-stories'
     | '/mission-control'
     | '/moral-intelligence'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/capital-intelligence'
+    | '/collective-intelligence'
     | '/human-stories'
     | '/mission-control'
     | '/moral-intelligence'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
+  CollectiveIntelligenceRoute: typeof CollectiveIntelligenceRoute
   HumanStoriesRoute: typeof HumanStoriesRoute
   MissionControlRoute: typeof MissionControlRoute
   MoralIntelligenceRoute: typeof MoralIntelligenceRoute
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HumanStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collective-intelligence': {
+      id: '/collective-intelligence'
+      path: '/collective-intelligence'
+      fullPath: '/collective-intelligence'
+      preLoaderRoute: typeof CollectiveIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capital-intelligence': {
       id: '/capital-intelligence'
       path: '/capital-intelligence'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CapitalIntelligenceRoute: CapitalIntelligenceRoute,
+  CollectiveIntelligenceRoute: CollectiveIntelligenceRoute,
   HumanStoriesRoute: HumanStoriesRoute,
   MissionControlRoute: MissionControlRoute,
   MoralIntelligenceRoute: MoralIntelligenceRoute,
