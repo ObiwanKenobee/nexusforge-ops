@@ -17,6 +17,7 @@ import { Route as HumanStoriesRouteImport } from './routes/human-stories'
 import { Route as CollectiveIntelligenceRouteImport } from './routes/collective-intelligence'
 import { Route as CivilizationDashboardRouteImport } from './routes/civilization-dashboard'
 import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
+import { Route as AtlasGuideRouteImport } from './routes/atlas-guide'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SystemsIntelligenceRoute = SystemsIntelligenceRouteImport.update({
@@ -59,6 +60,11 @@ const CapitalIntelligenceRoute = CapitalIntelligenceRouteImport.update({
   path: '/capital-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtlasGuideRoute = AtlasGuideRouteImport.update({
+  id: '/atlas-guide',
+  path: '/atlas-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -67,6 +73,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas-guide': typeof AtlasGuideRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/civilization-dashboard': typeof CivilizationDashboardRoute
   '/collective-intelligence': typeof CollectiveIntelligenceRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas-guide': typeof AtlasGuideRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/civilization-dashboard': typeof CivilizationDashboardRoute
   '/collective-intelligence': typeof CollectiveIntelligenceRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas-guide': typeof AtlasGuideRoute
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/civilization-dashboard': typeof CivilizationDashboardRoute
   '/collective-intelligence': typeof CollectiveIntelligenceRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/atlas-guide'
     | '/capital-intelligence'
     | '/civilization-dashboard'
     | '/collective-intelligence'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/atlas-guide'
     | '/capital-intelligence'
     | '/civilization-dashboard'
     | '/collective-intelligence'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/atlas-guide'
     | '/capital-intelligence'
     | '/civilization-dashboard'
     | '/collective-intelligence'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasGuideRoute: typeof AtlasGuideRoute
   CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
   CivilizationDashboardRoute: typeof CivilizationDashboardRoute
   CollectiveIntelligenceRoute: typeof CollectiveIntelligenceRoute
@@ -205,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CapitalIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atlas-guide': {
+      id: '/atlas-guide'
+      path: '/atlas-guide'
+      fullPath: '/atlas-guide'
+      preLoaderRoute: typeof AtlasGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasGuideRoute: AtlasGuideRoute,
   CapitalIntelligenceRoute: CapitalIntelligenceRoute,
   CivilizationDashboardRoute: CivilizationDashboardRoute,
   CollectiveIntelligenceRoute: CollectiveIntelligenceRoute,
