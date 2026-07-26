@@ -232,6 +232,7 @@ export function NodeGraph({
   edges: [string, string][];
   height?: number;
 }) {
+  const inset = (v: number) => 8 + v * 0.84;
   const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
   return (
     <div className="relative w-full grid-field overflow-hidden rounded-lg" style={{ height }}>
@@ -243,10 +244,10 @@ export function NodeGraph({
           return (
             <line
               key={i}
-              x1={na.x}
-              y1={na.y}
-              x2={nb.x}
-              y2={nb.y}
+              x1={inset(na.x)}
+              y1={inset(na.y)}
+              x2={inset(nb.x)}
+              y2={inset(nb.y)}
               stroke={toneVar(na.tone)}
               strokeWidth={0.18}
               strokeOpacity={0.5}
@@ -259,7 +260,7 @@ export function NodeGraph({
         <div
           key={n.id}
           className="absolute -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${n.x}%`, top: `${n.y}%` }}
+          style={{ left: `${inset(n.x)}%`, top: `${inset(n.y)}%` }}
         >
           <div
             className="relative max-w-[7.5rem] rounded-full border px-3 py-2 text-center text-[0.62rem] leading-tight font-medium backdrop-blur-sm"
