@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SystemsIntelligenceRouteImport } from './routes/systems-intelligence'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OpportunityGraphRouteImport } from './routes/opportunity-graph'
 import { Route as MoralIntelligenceRouteImport } from './routes/moral-intelligence'
 import { Route as MissionControlRouteImport } from './routes/mission-control'
@@ -23,6 +24,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SystemsIntelligenceRoute = SystemsIntelligenceRouteImport.update({
   id: '/systems-intelligence',
   path: '/systems-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpportunityGraphRoute = OpportunityGraphRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRoutesByTo {
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRoutesById {
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRouteTypes {
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/mission-control'
     | '/moral-intelligence'
     | '/opportunity-graph'
+    | '/sitemap.xml'
     | '/systems-intelligence'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/mission-control'
     | '/moral-intelligence'
     | '/opportunity-graph'
+    | '/sitemap.xml'
     | '/systems-intelligence'
   id:
     | '__root__'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/mission-control'
     | '/moral-intelligence'
     | '/opportunity-graph'
+    | '/sitemap.xml'
     | '/systems-intelligence'
   fileRoutesById: FileRoutesById
 }
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   MissionControlRoute: typeof MissionControlRoute
   MoralIntelligenceRoute: typeof MoralIntelligenceRoute
   OpportunityGraphRoute: typeof OpportunityGraphRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SystemsIntelligenceRoute: typeof SystemsIntelligenceRoute
 }
 
@@ -167,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/systems-intelligence'
       fullPath: '/systems-intelligence'
       preLoaderRoute: typeof SystemsIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/opportunity-graph': {
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   MissionControlRoute: MissionControlRoute,
   MoralIntelligenceRoute: MoralIntelligenceRoute,
   OpportunityGraphRoute: OpportunityGraphRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SystemsIntelligenceRoute: SystemsIntelligenceRoute,
 }
 export const routeTree = rootRouteImport
