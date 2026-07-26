@@ -9,8 +9,68 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SystemsIntelligenceRouteImport } from './routes/systems-intelligence'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as OpportunityGraphRouteImport } from './routes/opportunity-graph'
+import { Route as MoralIntelligenceRouteImport } from './routes/moral-intelligence'
+import { Route as MissionControlRouteImport } from './routes/mission-control'
+import { Route as HumanStoriesRouteImport } from './routes/human-stories'
+import { Route as CollectiveIntelligenceRouteImport } from './routes/collective-intelligence'
+import { Route as CivilizationDashboardRouteImport } from './routes/civilization-dashboard'
+import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
+import { Route as AtlasGuideRouteImport } from './routes/atlas-guide'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SystemsIntelligenceRoute = SystemsIntelligenceRouteImport.update({
+  id: '/systems-intelligence',
+  path: '/systems-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunityGraphRoute = OpportunityGraphRouteImport.update({
+  id: '/opportunity-graph',
+  path: '/opportunity-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoralIntelligenceRoute = MoralIntelligenceRouteImport.update({
+  id: '/moral-intelligence',
+  path: '/moral-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionControlRoute = MissionControlRouteImport.update({
+  id: '/mission-control',
+  path: '/mission-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HumanStoriesRoute = HumanStoriesRouteImport.update({
+  id: '/human-stories',
+  path: '/human-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectiveIntelligenceRoute = CollectiveIntelligenceRouteImport.update({
+  id: '/collective-intelligence',
+  path: '/collective-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CivilizationDashboardRoute = CivilizationDashboardRouteImport.update({
+  id: '/civilization-dashboard',
+  path: '/civilization-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapitalIntelligenceRoute = CapitalIntelligenceRouteImport.update({
+  id: '/capital-intelligence',
+  path: '/capital-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasGuideRoute = AtlasGuideRouteImport.update({
+  id: '/atlas-guide',
+  path: '/atlas-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +79,172 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas-guide': typeof AtlasGuideRoute
+  '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/civilization-dashboard': typeof CivilizationDashboardRoute
+  '/collective-intelligence': typeof CollectiveIntelligenceRoute
+  '/human-stories': typeof HumanStoriesRoute
+  '/mission-control': typeof MissionControlRoute
+  '/moral-intelligence': typeof MoralIntelligenceRoute
+  '/opportunity-graph': typeof OpportunityGraphRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas-guide': typeof AtlasGuideRoute
+  '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/civilization-dashboard': typeof CivilizationDashboardRoute
+  '/collective-intelligence': typeof CollectiveIntelligenceRoute
+  '/human-stories': typeof HumanStoriesRoute
+  '/mission-control': typeof MissionControlRoute
+  '/moral-intelligence': typeof MoralIntelligenceRoute
+  '/opportunity-graph': typeof OpportunityGraphRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas-guide': typeof AtlasGuideRoute
+  '/capital-intelligence': typeof CapitalIntelligenceRoute
+  '/civilization-dashboard': typeof CivilizationDashboardRoute
+  '/collective-intelligence': typeof CollectiveIntelligenceRoute
+  '/human-stories': typeof HumanStoriesRoute
+  '/mission-control': typeof MissionControlRoute
+  '/moral-intelligence': typeof MoralIntelligenceRoute
+  '/opportunity-graph': typeof OpportunityGraphRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atlas-guide'
+    | '/capital-intelligence'
+    | '/civilization-dashboard'
+    | '/collective-intelligence'
+    | '/human-stories'
+    | '/mission-control'
+    | '/moral-intelligence'
+    | '/opportunity-graph'
+    | '/sitemap.xml'
+    | '/systems-intelligence'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atlas-guide'
+    | '/capital-intelligence'
+    | '/civilization-dashboard'
+    | '/collective-intelligence'
+    | '/human-stories'
+    | '/mission-control'
+    | '/moral-intelligence'
+    | '/opportunity-graph'
+    | '/sitemap.xml'
+    | '/systems-intelligence'
+  id:
+    | '__root__'
+    | '/'
+    | '/atlas-guide'
+    | '/capital-intelligence'
+    | '/civilization-dashboard'
+    | '/collective-intelligence'
+    | '/human-stories'
+    | '/mission-control'
+    | '/moral-intelligence'
+    | '/opportunity-graph'
+    | '/sitemap.xml'
+    | '/systems-intelligence'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasGuideRoute: typeof AtlasGuideRoute
+  CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
+  CivilizationDashboardRoute: typeof CivilizationDashboardRoute
+  CollectiveIntelligenceRoute: typeof CollectiveIntelligenceRoute
+  HumanStoriesRoute: typeof HumanStoriesRoute
+  MissionControlRoute: typeof MissionControlRoute
+  MoralIntelligenceRoute: typeof MoralIntelligenceRoute
+  OpportunityGraphRoute: typeof OpportunityGraphRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SystemsIntelligenceRoute: typeof SystemsIntelligenceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/systems-intelligence': {
+      id: '/systems-intelligence'
+      path: '/systems-intelligence'
+      fullPath: '/systems-intelligence'
+      preLoaderRoute: typeof SystemsIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunity-graph': {
+      id: '/opportunity-graph'
+      path: '/opportunity-graph'
+      fullPath: '/opportunity-graph'
+      preLoaderRoute: typeof OpportunityGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moral-intelligence': {
+      id: '/moral-intelligence'
+      path: '/moral-intelligence'
+      fullPath: '/moral-intelligence'
+      preLoaderRoute: typeof MoralIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mission-control': {
+      id: '/mission-control'
+      path: '/mission-control'
+      fullPath: '/mission-control'
+      preLoaderRoute: typeof MissionControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/human-stories': {
+      id: '/human-stories'
+      path: '/human-stories'
+      fullPath: '/human-stories'
+      preLoaderRoute: typeof HumanStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collective-intelligence': {
+      id: '/collective-intelligence'
+      path: '/collective-intelligence'
+      fullPath: '/collective-intelligence'
+      preLoaderRoute: typeof CollectiveIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/civilization-dashboard': {
+      id: '/civilization-dashboard'
+      path: '/civilization-dashboard'
+      fullPath: '/civilization-dashboard'
+      preLoaderRoute: typeof CivilizationDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capital-intelligence': {
+      id: '/capital-intelligence'
+      path: '/capital-intelligence'
+      fullPath: '/capital-intelligence'
+      preLoaderRoute: typeof CapitalIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas-guide': {
+      id: '/atlas-guide'
+      path: '/atlas-guide'
+      fullPath: '/atlas-guide'
+      preLoaderRoute: typeof AtlasGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +257,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasGuideRoute: AtlasGuideRoute,
+  CapitalIntelligenceRoute: CapitalIntelligenceRoute,
+  CivilizationDashboardRoute: CivilizationDashboardRoute,
+  CollectiveIntelligenceRoute: CollectiveIntelligenceRoute,
+  HumanStoriesRoute: HumanStoriesRoute,
+  MissionControlRoute: MissionControlRoute,
+  MoralIntelligenceRoute: MoralIntelligenceRoute,
+  OpportunityGraphRoute: OpportunityGraphRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SystemsIntelligenceRoute: SystemsIntelligenceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
