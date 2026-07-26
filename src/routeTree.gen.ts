@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as OpportunityGraphRouteImport } from './routes/opportunity-graph'
+import { Route as MoralIntelligenceRouteImport } from './routes/moral-intelligence'
 import { Route as MissionControlRouteImport } from './routes/mission-control'
 import { Route as HumanStoriesRouteImport } from './routes/human-stories'
 import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const OpportunityGraphRoute = OpportunityGraphRouteImport.update({
   id: '/opportunity-graph',
   path: '/opportunity-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoralIntelligenceRoute = MoralIntelligenceRouteImport.update({
+  id: '/moral-intelligence',
+  path: '/moral-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MissionControlRoute = MissionControlRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
+  '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
+  '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
   '/mission-control': typeof MissionControlRoute
+  '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
     | '/capital-intelligence'
     | '/human-stories'
     | '/mission-control'
+    | '/moral-intelligence'
     | '/opportunity-graph'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
     | '/capital-intelligence'
     | '/human-stories'
     | '/mission-control'
+    | '/moral-intelligence'
     | '/opportunity-graph'
   id:
     | '__root__'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '/capital-intelligence'
     | '/human-stories'
     | '/mission-control'
+    | '/moral-intelligence'
     | '/opportunity-graph'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +104,7 @@ export interface RootRouteChildren {
   CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
   HumanStoriesRoute: typeof HumanStoriesRoute
   MissionControlRoute: typeof MissionControlRoute
+  MoralIntelligenceRoute: typeof MoralIntelligenceRoute
   OpportunityGraphRoute: typeof OpportunityGraphRoute
 }
 
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/opportunity-graph'
       fullPath: '/opportunity-graph'
       preLoaderRoute: typeof OpportunityGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moral-intelligence': {
+      id: '/moral-intelligence'
+      path: '/moral-intelligence'
+      fullPath: '/moral-intelligence'
+      preLoaderRoute: typeof MoralIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mission-control': {
@@ -140,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   CapitalIntelligenceRoute: CapitalIntelligenceRoute,
   HumanStoriesRoute: HumanStoriesRoute,
   MissionControlRoute: MissionControlRoute,
+  MoralIntelligenceRoute: MoralIntelligenceRoute,
   OpportunityGraphRoute: OpportunityGraphRoute,
 }
 export const routeTree = rootRouteImport
