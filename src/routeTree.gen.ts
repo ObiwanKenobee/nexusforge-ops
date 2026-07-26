@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SystemsIntelligenceRouteImport } from './routes/systems-intelligence'
 import { Route as OpportunityGraphRouteImport } from './routes/opportunity-graph'
 import { Route as MoralIntelligenceRouteImport } from './routes/moral-intelligence'
 import { Route as MissionControlRouteImport } from './routes/mission-control'
@@ -16,6 +17,11 @@ import { Route as HumanStoriesRouteImport } from './routes/human-stories'
 import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SystemsIntelligenceRoute = SystemsIntelligenceRouteImport.update({
+  id: '/systems-intelligence',
+  path: '/systems-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OpportunityGraphRoute = OpportunityGraphRouteImport.update({
   id: '/opportunity-graph',
   path: '/opportunity-graph',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
+  '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
+  '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/mission-control': typeof MissionControlRoute
   '/moral-intelligence': typeof MoralIntelligenceRoute
   '/opportunity-graph': typeof OpportunityGraphRoute
+  '/systems-intelligence': typeof SystemsIntelligenceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/mission-control'
     | '/moral-intelligence'
     | '/opportunity-graph'
+    | '/systems-intelligence'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/mission-control'
     | '/moral-intelligence'
     | '/opportunity-graph'
+    | '/systems-intelligence'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/mission-control'
     | '/moral-intelligence'
     | '/opportunity-graph'
+    | '/systems-intelligence'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,10 +118,18 @@ export interface RootRouteChildren {
   MissionControlRoute: typeof MissionControlRoute
   MoralIntelligenceRoute: typeof MoralIntelligenceRoute
   OpportunityGraphRoute: typeof OpportunityGraphRoute
+  SystemsIntelligenceRoute: typeof SystemsIntelligenceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/systems-intelligence': {
+      id: '/systems-intelligence'
+      path: '/systems-intelligence'
+      fullPath: '/systems-intelligence'
+      preLoaderRoute: typeof SystemsIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/opportunity-graph': {
       id: '/opportunity-graph'
       path: '/opportunity-graph'
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   MissionControlRoute: MissionControlRoute,
   MoralIntelligenceRoute: MoralIntelligenceRoute,
   OpportunityGraphRoute: OpportunityGraphRoute,
+  SystemsIntelligenceRoute: SystemsIntelligenceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
