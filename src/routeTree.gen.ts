@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HumanStoriesRouteImport } from './routes/human-stories'
+import { Route as CapitalIntelligenceRouteImport } from './routes/capital-intelligence'
 import { Route as IndexRouteImport } from './routes/index'
 
 const HumanStoriesRoute = HumanStoriesRouteImport.update({
   id: '/human-stories',
   path: '/human-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapitalIntelligenceRoute = CapitalIntelligenceRouteImport.update({
+  id: '/capital-intelligence',
+  path: '/capital-intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/capital-intelligence': typeof CapitalIntelligenceRoute
   '/human-stories': typeof HumanStoriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/human-stories'
+  fullPaths: '/' | '/capital-intelligence' | '/human-stories'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/human-stories'
-  id: '__root__' | '/' | '/human-stories'
+  to: '/' | '/capital-intelligence' | '/human-stories'
+  id: '__root__' | '/' | '/capital-intelligence' | '/human-stories'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CapitalIntelligenceRoute: typeof CapitalIntelligenceRoute
   HumanStoriesRoute: typeof HumanStoriesRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/human-stories'
       fullPath: '/human-stories'
       preLoaderRoute: typeof HumanStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capital-intelligence': {
+      id: '/capital-intelligence'
+      path: '/capital-intelligence'
+      fullPath: '/capital-intelligence'
+      preLoaderRoute: typeof CapitalIntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CapitalIntelligenceRoute: CapitalIntelligenceRoute,
   HumanStoriesRoute: HumanStoriesRoute,
 }
 export const routeTree = rootRouteImport
